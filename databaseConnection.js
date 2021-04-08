@@ -4,9 +4,9 @@ const is_heroku = process.env.IS_HEROKU || false;
 
 const dbConfigHeroku = {
 	host: "us-cdbr-east-03.cleardb.com",
-	user: "b91e157ccf372a",
-	password: "9f038b93",
-	database: "heroku_725611166f782d7",
+	user: "bd33f94462c5f6",
+	password: "ea69da30",
+	database: "heroku_0ce7824f11d48c9",
 	multipleStatements: false,
 	namedPlaceholders: true
 };
@@ -14,8 +14,8 @@ const dbConfigHeroku = {
 const dbConfigLocal = {
 	host: "localhost",
 	user: "root",
-	password: "Password",
-	database: "lab_example",
+	password: "rootUserIsMe856#!MyselfandSQL5894#!",
+	database: "restaurant_review",
 	multipleStatements: false,
 	namedPlaceholders: true
 };

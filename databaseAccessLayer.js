@@ -1,8 +1,8 @@
 const database = include('/databaseConnection');
 
 
-function getAllUsers(callback) {
-	let sqlQuery = "SELECT web_user_id, first_name, last_name, email FROM web_user";
+function grabRestaurants(callback) {
+	let sqlQuery = "SELECT name, description, count(*) AS 'count' FROM restaurant";
 	database.query(sqlQuery, (err, results, fields) => {
 		if (err) {
 			callback(err, null);
@@ -70,4 +70,4 @@ function deleteUser(webUserId, callback) {
 	
 
 
-module.exports = {getAllUsers, addUser, deleteUser}
+module.exports = {grabRestaurants, addUser, deleteUser}

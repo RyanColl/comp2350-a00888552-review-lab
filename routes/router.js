@@ -14,7 +14,7 @@ router.get('/deleteRestaurant', (req, res) => {
 			console.log(req.query);
 			let restaurantId = req.query.id;
 			if (restaurantId) {
-				dbModel.deleteUser(restaurantId, (err, result) => {
+				dbModel.deleteRestaurant(restaurantId, (err, result) => {
 					if (err) {
 						res.render('error', { message: 'Error writing to MySQL' });
 						console.log("Error writing to mysql");

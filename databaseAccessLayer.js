@@ -26,7 +26,7 @@ function addUser(postData, callback) {
 	database.query(sqlInsertSalt, params, (err, results, fields) => {
 		if (err) {
 			console.log(err);
-			callback(err, null);
+			callback(err, null); 
 		}
 		else {
 			let insertedID = results.insertId;

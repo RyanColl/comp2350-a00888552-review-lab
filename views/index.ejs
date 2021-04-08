@@ -29,12 +29,12 @@
 							<tr>
 								<td><%= allRestaurants[i].name %></td>
 								<td><%= allRestaurants[i].description %></td>
-								<td><a href="/deleteRestaurant?id=<%= i %>">
+								<td><a href="/deleteRestaurant?id=<%= allRestaurants[i].restaurant_id %>">
 									<span class="icon is-small">
 										<i class="fas fa-trash"></i>
 									</span></a>
 								</td>
-								<td><a href="/reviewRestaurant?id=<%= i %>">
+								<td><a href="/reviewRestaurant?id=<%= allRestaurants[i].restaurant_id %>">
 									<span class="icon is-small">
 										<i class="fas fa-star"></i>
 									</span></a>

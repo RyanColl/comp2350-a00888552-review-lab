@@ -17,9 +17,10 @@
 						<table class="table is-bordered is-hoverable is-striped is-narrow">
 							<thead>
 							<tr>
-								<th> Rstaurant Name </th>
+								<th> Restaurant Name </th>
 								<th> Restaurant Description </th>
-								<th> Email </th>
+								<th> Delete </th>
+								<th> Review </th>
 								<th> &nbsp; </th>
 							</tr>
 							</thead>
@@ -28,9 +29,14 @@
 							<tr>
 								<td><%= allRestaurants[i].name %></td>
 								<td><%= allRestaurants[i].description %></td>
-								<td><a href="/deleteUser?id=<%= allRestaurants[i].web_user_id %>">
+								<td><a href="/deleteUser?id=<%= allRestaurants[i].restaurant_id %>">
 									<span class="icon is-small">
-										<i class="fas fa-user-times"></i>
+										<i class="fas fa-trash"></i>
+									</span></a>
+								</td>
+								<td><a href="/reviewUser?id=<%= allRestaurants[i].restaurant_id %>">
+									<span class="icon is-small">
+										<i class="fas fa-star"></i>
 									</span></a>
 								</td>
 							</tr>

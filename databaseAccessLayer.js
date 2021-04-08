@@ -51,13 +51,13 @@ function addUser(postData, callback) {
 		}
 	});
 }
-function deleteUser(webUserId, callback) {
-	let sqlDeleteUser = "DELETE FROM web_user WHERE web_user_id = :userID";
+function deleteRestaurant(restaurantId, callback) {
+	let sqlDeleteRestaurant = "DELETE FROM restaurant WHERE restaurant_id = :restID";
 	let params = {
-		userID: webUserId
+		restID: restaurantId
 	};
-	console.log(sqlDeleteUser);
-	database.query(sqlDeleteUser, params, (err, results, fields) => {
+	console.log(sqlDeleteRestaurant);
+	database.query(sqlDeleteRestaurant, params, (err, results, fields) => {
 		if (err) {
 			callback(err, null);
 		}
@@ -70,4 +70,4 @@ function deleteUser(webUserId, callback) {
 	
 
 
-module.exports = {grabRestaurants, addUser, deleteUser}
+module.exports = {grabRestaurants, addUser, deleteRestaurant}

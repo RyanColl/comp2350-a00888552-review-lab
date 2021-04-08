@@ -2,7 +2,7 @@
 const database = include('databaseConnection');
 const dbModel = include('databaseAccessLayer');
 //const dbModel = include('staticData');
-router.get('/deleteUser', (req, res) => {
+router.get('/deleteRestaurant', (req, res) => {
 	console.log("delete user");
 	database.getConnection(function (err, dbConnection) {
 		if (err) {
@@ -12,9 +12,9 @@ router.get('/deleteUser', (req, res) => {
 		}
 		else {
 			console.log(req.query);
-			let userId = req.query.id;
-			if (userId) {
-				dbModel.deleteUser(userId, (err, result) => {
+			let restaurantId = req.query.id;
+			if (restaurantId) {
+				dbModel.deleteUser(restaurantId, (err, result) => {
 					if (err) {
 						res.render('error', { message: 'Error writing to MySQL' });
 						console.log("Error writing to mysql");

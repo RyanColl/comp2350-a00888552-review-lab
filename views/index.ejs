@@ -10,7 +10,7 @@
 			<div class="maincolumns columns is-desktop is-vcentered">
 				<div class="column is-10 is-offset-1 notification is-info is-light box container">
 					<div class="title">
-						Web Users
+						Restaurants
 					</div>
 					<% if (locals.allRestaurants) { %>
 						<div class="table-container">
@@ -34,7 +34,7 @@
 										<i class="fas fa-trash"></i>
 									</span></a>
 								</td>
-								<td><a href="/reviewRestaurant?id=<%= allRestaurants[i].restaurant_id %>">
+								<td><a href="/showReviews?id=<%= allRestaurants[i].restaurant_id %>">
 									<span class="icon is-small">
 										<i class="fas fa-star"></i>
 									</span></a>

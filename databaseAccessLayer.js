@@ -13,7 +13,59 @@ function grabRestaurants(callback) {
 		}		
 	});
 }
-
+function addReview(postData, callback) {
+	let sqlInsert = `INSERT INTO review (restaurant_id, reviewer_name, details, rating)
+						 VALUES (:restaurant_id, :reviewer_name, :details, :rating);`;
+	console.log(postData.restaurant_id);
+	let params = {
+		reviewer_name : postData.reviewer_name,
+		restaurant_id: postData.restaurant_id,
+		details: postData.details,
+		rating: postData.rating
+	};
+	
+	database.query(sqlInsert, params, (err, results, fields) => {
+		if (err) {
+			console.log(err);
+			callback(err, null); 
+		}
+		else {
+			console.log(results);
+			callback(null, results);
+		}
+	});
+}
+function deleteReview(reviewId, callback) {
+	let sqlDeleteReview = "DELETE FROM review WHERE review_id = :revID";
+	let params = {
+		revID: reviewId
+	};
+	console.log(sqlDeleteReview);
+	database.query(sqlDeleteReview, params, (err, results, fields) => {
+		if (err) {
+			callback(err, null);
+		}
+		else {
+			console.log(results);
+			callback(null, results);
+		}
+	});
+}
+function showReviews(reviewId, callback) {
+	let sqlQuery = `SELECT * FROM review WHERE restaurant_id = :revID`;
+	let params = {
+		revID: reviewId
+	};
+	database.query(sqlQuery, params, (err, results, fields) => {
+		if (err) {
+			callback(err, null);
+		}
+		else {
+			console.log(results);
+			callback(null, results);
+		}		
+	});
+}
 function addRestaurant(postData, callback) {
 	let sqlInsert = `INSERT INTO restaurant (name, description)
 						 VALUES (:restaurant_name, :description);`;
@@ -52,4 +104,4 @@ function deleteRestaurant(restaurantId, callback) {
 	
 
 
-module.exports = {grabRestaurants, addRestaurant, deleteRestaurant}
+module.exports = {grabRestaurants, addRestaurant, deleteRestaurant, showReviews, deleteReview, addReview}

@@ -24,7 +24,7 @@ if (is_heroku == 1) {
 	var database = mysql.createPool(dbConfigHeroku);
 }
 else {
-	var database = mysql.createPool(dbConfigLocal);
+	var database = mysql.createPool(dbConfigHeroku);
 }
 
 module.exports = database;

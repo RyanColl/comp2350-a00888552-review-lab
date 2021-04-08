@@ -13,41 +13,23 @@ function grabRestaurants(callback) {
 		}		
 	});
 }
-const passwordPepper = "SeCretPeppa4MySal+";
-function addUser(postData, callback) {
-	let sqlInsertSalt = `INSERT INTO web_user (first_name, last_name, email, password_salt)
-						 VALUES (:first_name, :last_name, :email, sha2(UUID(),512));`;
+
+function addRestaurant(postData, callback) {
+	let sqlInsert = `INSERT INTO restaurant (name, description)
+						 VALUES (:restaurant_name, :description);`;
 	let params = {
-		first_name: postData.first_name,
-		last_name: postData.last_name,
-		email: postData.email
+		restaurant_name: postData.restaurant_name,
+		description: postData.description,
 	};
-	console.log(sqlInsertSalt);
-	database.query(sqlInsertSalt, params, (err, results, fields) => {
+	console.log(sqlInsert);
+	database.query(sqlInsert, params, (err, results, fields) => {
 		if (err) {
 			console.log(err);
 			callback(err, null); 
 		}
 		else {
-			let insertedID = results.insertId;
-			let updatePasswordHash = `UPDATE web_user SET password_hash = 
-						   			  sha2(concat(:password,:pepper,password_salt),512) WHERE web_user_id = :userId;`
-			let params2 = {
-				password: postData.password,
-				pepper: passwordPepper,
-				userId: insertedID
-			}
-			console.log(updatePasswordHash);
-			database.query(updatePasswordHash, params2, (err, results, fields) => {
-				if (err) {
-					console.log(err);
-					callback(err, null);
-				}
-				else {
-					console.log(results);
-					callback(null, results);
-				}
-			});
+			console.log(results);
+			callback(null, results);
 		}
 	});
 }
@@ -70,4 +52,4 @@ function deleteRestaurant(restaurantId, callback) {
 	
 
 
-module.exports = {grabRestaurants, addUser, deleteRestaurant}
+module.exports = {grabRestaurants, addRestaurant, deleteRestaurant}

@@ -35,7 +35,7 @@ router.get('/deleteRestaurant', (req, res) => {
 		}
 	});
 });
-router.post('/addUser', (req, res) => {
+router.post('/addRestaurants', (req, res) => {
 	console.log("form submit");
 	database.getConnection(function (err, dbConnection) {
 		if (err) {
@@ -45,7 +45,7 @@ router.post('/addUser', (req, res) => {
 		}
 		else {
 			console.log(req.body);
-			dbModel.addUser(req.body, (err, result) => {
+			dbModel.addRestaurant(req.body, (err, result) => {
 				if (err) {
 					res.render('error', { message: 'Error writing to MySQL' });
 					console.log("Error writing to mysql");
